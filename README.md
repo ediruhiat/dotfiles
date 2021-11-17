@@ -1,2 +1,2 @@
 # dotfiles
-Collection of dotfiles
+my configs collection
