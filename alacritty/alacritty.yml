@@ -17,25 +17,25 @@ window:
   #
   # Specified in number of columns/lines, not pixels.
   # If both are `0`, this setting is ignored.
-  dimensions:
-    columns: 110
-    lines: 32
+  #dimensions:
+    #columns: 94
+    #lines: 30
 
   # Window position (changes require restart)
   #
   # Specified in number of pixels.
   # If the position is not set, the window manager will handle the placement.
-  position:
-    x: 2
-    y: 2
+  #position:
+    #x: 12
+    #y: 42
 
   # Window padding (changes require restart)
   #
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 12
-    y: 10
+    x: 9
+    y: 9
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: false
@@ -50,7 +50,7 @@ window:
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background, but no title bar buttons
   #
-  decorations: none
+  decorations: full
 
   # Startup Mode (changes require restart)
   #
@@ -123,8 +123,6 @@ font:
     # The `style` can be specified to pick a specific face.
     style: Regular
 
-  size: 10
-  
   # Bold font face
   bold:
     # Font family
@@ -183,7 +181,7 @@ font:
     style: Bold Italic
 
   # Point size
-  size: 12.0
+  size: 10.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -575,15 +573,15 @@ schemes:
 # *solarized-dark
 # *tomorrow-night
 
-#colors: *doom-one
+colors: *doom-one
 #colors: *dracula
 #colors: *monokai-pro
 #colors: *nord
 #colors: *oceanic-next
 #colors: *palenight
-#colors: *solarized-ligth
+#colors: *solarized-light
 #colors: *solarized-dark
-colors: *tomorrow-night
+#colors: *tomorrow-night
 
 #######################################
 ##       END OF COLOR SCHEMES        ##
@@ -620,7 +618,7 @@ colors: *tomorrow-night
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
 # background_opacity: 1.0
-background_opacity: 0.5
+background_opacity: 0.75
 
 #selection:
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
