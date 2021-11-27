@@ -1,62 +1,75 @@
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
+" lang
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'ryanoasis/vim-devicons'
-Plug 'airblade/vim-gitgutter'
-Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
-Plug 'scrooloose/nerdcommenter'
-Plug 'vim-airline/vim-airline'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
-Plug 'vim-airline/vim-airline-themes'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
+"Plug 'mgechev/vim-jsx'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
+
+" other
+Plug 'miyakogi/seiya.vim'
+Plug 'Yggdroot/indentLine'
+Plug 'morhetz/gruvbox'
+Plug 'tomasr/molokai'
+Plug 'scrooloose/nerdcommenter'
+Plug 'ryanoasis/vim-devicons'
+Plug 'airblade/vim-gitgutter'
+Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
+Plug 'vim-airline/vim-airline'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'mattn/emmet-vim'
+Plug 'scrooloose/nerdtree'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'sjl/badwolf'
 
 " Initialize plugin system
 call plug#end()
 
 " Colors
 set termguicolors
-colorscheme PaperColor
+colorscheme badwolf
 
 " autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE ctermfg=NONE
 
+" indentLine
+let g:indentLine_color_gui = '#999966'
+let g:indentLine_char = '▏'
+
+" vim visual multi
+let g:VM_maps = {}
+let g:VM_maps['Find Under']         = '<C-d>'           " replace C-n
+let g:VM_maps['Find Subword Under'] = '<C-d>'           " replace visual C-n
+let g:VM_maps["Select Cursor Down"] = '<C-j>'           " start selecting down
+let g:VM_maps["Select Cursor Up"]   = '<C-k>'           " start selecting up
+
 inoremap jk <ESC>
-nmap <C-n> :NERDTreeToggle<CR>
+vmap f :Prettier <cr>
+nmap f :Prettier <cr>
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
-" open NERDTree automatically
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * NERDTree
 
-let NERDTreeShowHidden=1
-
+" airline
 let g:airline_theme="deus"
 
-let g:NERDTreeGitStatusWithFlags = 1
+" nerdcommenter
+vmap ++ <plug>NERDCommenterToggle
+nmap ++ <plug>NERDCommenterToggle
 
-let g:NERDTreeIgnore = ['^node_modules$']
+" nerdtree
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+let NERDTreeShowHidden=1
+nmap <C-e> :NERDTreeToggle<CR>
 
-let g:user_emmet_install_global = 0
-autocmd FileType html,css,jsx,tsx EmmetInstall
-
-" vim-prettier
-"let g:prettier#quickfix_enabled = 0
-"let g:prettier#quickfix_auto_focus = 0
 " prettier command for coc
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " run prettier on save
 let g:prettier#autoformat = 1
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
-
 
 " ctrlp
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
@@ -65,6 +78,8 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
+
+" basic stuff
 set number
 
 set smarttab
@@ -74,24 +89,6 @@ set shiftwidth=2
 " always uses spaces instead of tab characters
 set expandtab
 
-" sync open file with NERDTree
-" " Check if NERDTree is open or active
-function! IsNERDTreeOpen()        
-  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
-endfunction
-
-" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
-" file, and we're not in vimdiff
-function! SyncTree()
-  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
-    NERDTreeFind
-    wincmd p
-  endif
-endfunction
-
-" Highlight currently open buffer in NERDTree
-autocmd BufEnter * call SyncTree()
-
 " coc config
 let g:coc_global_extensions = [
   \ 'coc-snippets',
@@ -100,6 +97,9 @@ let g:coc_global_extensions = [
   \ 'coc-eslint', 
   \ 'coc-prettier', 
   \ 'coc-json', 
+  \ 'coc-emmet', 
+  \ 'coc-phpls', 
+  \ 'coc-css', 
   \ ]
 
 " don't give |ins-completion-menu| messages.
@@ -158,6 +158,8 @@ nmap <F2> <Plug>(coc-rename)
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git|vendor'
+
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
@@ -180,10 +182,6 @@ xmap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
-
-" Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <C-d> <Plug>(coc-range-select)
-xmap <silent> <C-d> <Plug>(coc-range-select)
 
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
@@ -221,5 +219,9 @@ set breakindent
 " ident by an additional 2 characters on wrapped lines, when line >= 40 characters, put 'showbreak' at start of line
 set breakindentopt=shift:0,min:40,sbr
 
-" append '>>' to indent
-set showbreak=>>
+" append '>' to indent
+set showbreak=
+
+" Default value: ['ctermbg']
+let g:seiya_target_groups = has('nvim') ? ['guibg'] : ['ctermbg']
+let g:seiya_auto_enable=1
