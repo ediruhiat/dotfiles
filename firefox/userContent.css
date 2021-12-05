@@ -1,0 +1,22 @@
+.search-wrapper {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.search-inner-wrapper {
+  display: none !important;
+}
+
+.logo-and-wordmark {
+  margin: 0 !important;
+}
+
+.outer-wrapper.ds-outer-wrapper-breakpoint-override.only-search.visible-logo {
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 100vh !important;
+  min-width: 100vw !important;
+}
