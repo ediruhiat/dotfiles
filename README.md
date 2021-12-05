@@ -1,11 +1,14 @@
 # My Linux environment configs
 
 This repo storing some of my linux environment configs.
-#### System Stack :
+#### Software used :
  - Arch Linux
  - X11, xorg, wayland
- - Gnome 41
- - Termite
+ - i3wm
+ - lightdm
+ - picom
+ - polybar
+ - Alacritty
  - Tmux
  - Neovim
  - Vim Plug
