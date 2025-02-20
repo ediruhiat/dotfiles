@@ -1,0 +1,69 @@
+{
+  "workbench.iconTheme": "vscode-seedling-icon-theme",
+  "workbench.startupEditor": "none",
+  "window.commandCenter": false,
+  "workbench.layoutControl.enabled": false,
+  "workbench.activityBar.location": "top",
+  "workbench.sideBar.location": "right",
+  "editor.fontSize": 15,
+  "editor.fontFamily": "'Fira Code'",
+  "editor.fontLigatures": true,
+  "editor.lineHeight": 1.68,
+  "editor.tabSize": 2,
+  "workbench.editor.showTabs": "none",
+  "window.zoomLevel": 2,
+  "editor.lineNumbers": "off",
+  "editor.guides.indentation": false,
+  "editor.stickyScroll.scrollWithEditor": false,
+  "workbench.tree.enableStickyScroll": false,
+  "editor.stickyScroll.enabled": false,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "breadcrumbs.enabled": false,
+  "editor.minimap.enabled": false,
+  "workbench.preferredDarkColorTheme": "React Theme",
+  "workbench.productIconTheme": "feather-vscode",
+  "workbench.editor.editorActionsLocation": "hidden",
+  "editor.matchBrackets": "never",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "git.enableSmartCommit": true,
+  "gitlens.rebaseEditor.ordering": "asc",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // "http.proxy": "http://proxy01:8080",
+  // "http.proxyAuthorization": "M988:Jakarta44",
+  "window.menuBarVisibility": "compact",
+  "security.workspace.trust.untrustedFiles": "open",
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "workbench.colorCustomizations": {
+    "terminal.background": "#00000000"
+  },
+  "workbench.settings.applyToAllProfiles": ["workbench.colorCustomizations"],
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "database-client.autoSync": true,
+  "workbench.colorTheme": "React Dev Theme (dark)",
+  "github.copilot.advanced": {
+    "authProvider": "github"
+  },
+  "remote.SSH.remotePlatform": {
+    "10.6.226.209": "windows"
+  },
+  "explorer.confirmDelete": false,
+  "supermaven.enable": {
+    "*": false
+  }
+}
