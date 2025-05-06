@@ -1,0 +1,41 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+      "alt-w": "pane::CloseActiveItem",
+      "alt-[": "pane::ActivatePreviousItem",
+      "alt-]": "pane::ActivateNextItem",
+      "ctrl-b": "workspace::ToggleLeftDock"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "alt-j": "editor::MoveLineDown",
+      "alt-k": "editor::MoveLineUp",
+      "ctrl-b": "workspace::ToggleLeftDock",
+      "alt-shift-f": "editor::Format",
+      "alt-n": "editor::GoToDiagnostic",
+      "alt-shift-n": "editor::GoToPreviousDiagnostic",
+      "alt-shift-d": "editor::SelectNext",
+      "alt-shift-j": "editor::AddSelectionBelow",
+      "alt-shift-k": "editor::AddSelectionAbove"
+
+    }
+  },
+  {
+    "context": "Editor && (showing_code_actions || showing_completions)",
+    "bindings": {
+      "ctrl-j": "editor::ContextMenuNext",
+      "ctrl-k": "editor::ContextMenuPrevious"
+    }
+  }
+]
